@@ -41,14 +41,15 @@
 
     <EditText
         android:id="@+id/contentEditText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="Enter the description"
-        android:gravity="top"
-        android:padding="12dp"
-        android:textSize="18sp"
+        android:layout_width="378dp"
+        android:layout_height="347dp"
         android:layout_below="@id/titleEditText"
+        android:layout_marginTop="12dp"
         android:background="@drawable/orange_border"
-        android:layout_marginTop="12dp" />
+        android:gravity="top"
+        android:hint="Enter the description"
+        android:padding="12dp"
+        android:textSize="18sp" />
+
 
 </RelativeLayout>
