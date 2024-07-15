@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:text="Edit Note"
-        android:textColor="@color/orange"
+        android:textColor="@color/green"
         android:textSize="24sp" />
 
     <ImageView
@@ -35,7 +35,7 @@
         android:padding="12dp"
         android:textSize="20sp"
         android:layout_below="@id/editNoteHeading"
-        android:background="@drawable/orange_border"
+        android:background="@drawable/green_border"
         android:layout_marginTop="16dp"
         android:maxLines="1"/>
 
@@ -48,7 +48,7 @@
         android:padding="12dp"
         android:textSize="18sp"
         android:layout_below="@id/updateTitleEditText"
-        android:background="@drawable/orange_border"
+        android:background="@drawable/green_border"
         android:layout_marginTop="12dp" />
 
 </RelativeLayout>

@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:text="Add Note"
-        android:textColor="@color/orange"
+        android:textColor="@color/green"
         android:textSize="24sp" />
 
     <ImageView
@@ -35,7 +35,7 @@
         android:padding="12dp"
         android:textSize="20sp"
         android:layout_below="@id/addNoteHeading"
-        android:background="@drawable/orange_border"
+        android:background="@drawable/green_border"
         android:layout_marginTop="16dp"
         android:maxLines="1"/>
 
@@ -45,7 +45,7 @@
         android:layout_height="347dp"
         android:layout_below="@id/titleEditText"
         android:layout_marginTop="12dp"
-        android:background="@drawable/orange_border"
+        android:background="@drawable/green_border"
         android:gravity="top"
         android:hint="Enter the description"
         android:padding="12dp"
