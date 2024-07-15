@@ -31,10 +31,15 @@ class UpdateNoteActivity : AppCompatActivity() {
         binding.updateSaveButton.setOnClickListener{
             val newTitle = binding.updateTitleEditText.text.toString()
             val newContent = binding.updateContentEditText.text.toString()
-            val updatedNote = Note(noteId, newTitle, newContent)
-            db.updateNote(updatedNote)
-            finish()
-            Toast.makeText(this,"Changes Saved..!", Toast.LENGTH_SHORT).show()
+
+            if (newTitle.isEmpty() && newContent.isEmpty()) {
+                Toast.makeText(this,"Enter both Title and Content",Toast.LENGTH_SHORT).show()
+            }else{
+                val updatedNote = Note(noteId, newTitle, newContent)
+                db.updateNote(updatedNote)
+                finish()
+                Toast.makeText(this,"Changes Saved..!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
