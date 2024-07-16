@@ -11,13 +11,6 @@ Noteapp is a mobile application for managing personal notes. This app allows use
 
 ## Screenshots
 
-![Loading Screen](screenshots/loading.jpg)
-![SignIn Screen](screenshots/signin.jpg)
-![SignUp Screen](screenshots/signup.jpg)
-![Notes Screen](screenshots/notes.jpg)
-![Add Note Screen](screenshots/add_note.jpg)
-![Edit Note Screen](screenshots/edit_note.jpg)
-
 <img src="screenshots/loading.jpg" alt="Loading Screen" width="400" height="800">
 <img src="screenshots/signin.jpg" alt="SignIn Screen" width="400" height="800">
 <img src="screenshots/signup.jpg" alt="SignUp Screen" width="400" height="800">
