@@ -1,13 +1,12 @@
 package com.example.noteapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.noteapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class LogInActivity : AppCompatActivity() {
+class LogInActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySignInBinding
     private lateinit var firebaseAuth: FirebaseAuth
@@ -30,21 +29,24 @@ class LogInActivity : AppCompatActivity() {
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {
 
-                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                    if (it.isSuccessful) {
+                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
+                        // Sign in failed, display the error in alert dialog
+                        task.exception?.let {
+                            displayAlert("Error", it)
+                        } ?: run {
+                            displayAlert("Error", "Unknown error occurred.")
+                        }
                     }
                 }
-            } else {
+            } else
                 Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
-
             }
         }
-    }
 
     override fun onStart() {
         super.onStart()
