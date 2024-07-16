@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.noteapp.databinding.ActivityAddNoteBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class AddNoteActivity : AppCompatActivity() {
 
@@ -24,10 +25,16 @@ class AddNoteActivity : AppCompatActivity() {
             if (title.isEmpty() && content.isEmpty()) {
                 Toast.makeText(this,"Enter both Title and Content",Toast.LENGTH_SHORT).show()
             }else {
-                val note = Note(0, title, content)
-                db.insertNote(note)
-                finish()
-                Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show()
+
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                if (currentUser != null) {
+                    val userId = currentUser.uid
+                    val note = Note(0, title, content, userId)
+                    db.insertNote(note)
+                    finish()
+                    Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
     }

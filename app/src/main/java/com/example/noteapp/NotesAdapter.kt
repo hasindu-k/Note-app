@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 
-class NotesAdapter(private var notes: List<Note>, private val context: Context) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
+class NotesAdapter(private var notes: List<Note>, private val context: Context, private val userId: String) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
     private val db: NotesDatabaseHelper = NotesDatabaseHelper(context)
 
@@ -39,13 +39,14 @@ class NotesAdapter(private var notes: List<Note>, private val context: Context) 
         holder.updateButton.setOnClickListener{
             val intent = Intent(holder.itemView.context, UpdateNoteActivity::class.java).apply {
                 putExtra("note_id", note.id)
+                putExtra("user_id", userId)
             }
             holder.itemView.context.startActivity(intent)
         }
 
         holder.deleteButton.setOnClickListener{
             db.deleteNote(note.id)
-            refreshData(db.getAllNotes())
+            refreshData(db.getAllNotes(userId))
             Toast.makeText(holder.itemView.context, "Note Deleted Successfully .. !", Toast.LENGTH_SHORT).show()
         }
     }

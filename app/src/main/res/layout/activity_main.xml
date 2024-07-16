@@ -8,11 +8,35 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/notesHeading"
+        android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="18dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="Username" />
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="18dp"
+        android:layout_alignParentEnd="true"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black" />
+
+    <TextView
+        android:id="@+id/notesHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
         android:text="@string/heading"
         android:layout_marginStart="18dp"
         android:textColor="@color/black"
