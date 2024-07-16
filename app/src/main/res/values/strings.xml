@@ -11,5 +11,5 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="add_button_description">Add new item</string>
-    <string name="logout">Log Out</string>
+    <string name="logout">Sign Out</string>
 </resources>
