@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         if (currentUser != null) {
             val userId = currentUser.uid
-            val userName = currentUser.displayName
+            val userName = currentUser.email
 
             binding.userNameTextView.text = userName ?: "Guest"
 

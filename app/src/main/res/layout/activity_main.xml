@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="18dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:text="Username" />
 
     <!-- Logout Button -->
