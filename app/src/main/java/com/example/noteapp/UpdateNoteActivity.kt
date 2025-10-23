@@ -3,12 +3,13 @@ package com.example.noteapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.noteapp.data.NotesRepository
 import com.example.noteapp.databinding.ActivityUpdateNoteBinding
 
 class UpdateNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUpdateNoteBinding
-    private lateinit var db: NotesDatabaseHelper
+    private lateinit var repository: NotesRepository
     private var noteId: Int = -1
     private lateinit var userId: String
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,7 @@ class UpdateNoteActivity : AppCompatActivity() {
         binding = ActivityUpdateNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = NotesDatabaseHelper(this)
+        repository = NotesRepository(this)
 
         noteId = intent.getIntExtra("note_id",-1)
         userId = intent.getStringExtra("user_id") ?: ""
@@ -26,7 +27,7 @@ class UpdateNoteActivity : AppCompatActivity() {
             return
         }
 
-        val note = db.getNoteByID(noteId, userId)
+        val note = repository.getNoteById(noteId, userId)
         binding.updateTitleEditText.setText(note.title)
         binding.updateContentEditText.setText(note.content)
 
@@ -38,7 +39,7 @@ class UpdateNoteActivity : AppCompatActivity() {
                 Toast.makeText(this,"Enter both Title and Content",Toast.LENGTH_SHORT).show()
             }else{
                 val updatedNote = Note(noteId, newTitle, newContent, userId)
-                db.updateNote(updatedNote)
+                repository.updateNote(updatedNote)
                 finish()
                 Toast.makeText(this,"Changes Saved..!", Toast.LENGTH_SHORT).show()
             }
