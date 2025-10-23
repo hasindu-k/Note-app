@@ -2,53 +2,87 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".UpdateNoteActivity">
+    tools:context=".UpdateNoteActivity"
+    android:background="?attr/colorSurface">
 
-    <TextView
+    <!-- Heading -->
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/editNoteHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:text="Edit Note"
-        android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <ImageView
+    <!-- Save button -->
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/updateSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_done_24"
+        app:tint="?attr/colorOnBackground"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/editNoteHeading"
-        android:layout_marginEnd="6dp" />
+        android:layout_marginEnd="6dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.None" />
 
-    <EditText
-        android:id="@+id/updateTitleEditText"
+    <!-- Title Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/updateTitleInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="Enter the tittle"
-        android:padding="12dp"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/editNoteHeading"
-        android:background="@drawable/green_border"
         android:layout_marginTop="16dp"
-        android:maxLines="1"/>
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:hintTextColor="?attr/colorOnSurface"
+        android:hint="Enter the title">
 
-    <EditText
-        android:id="@+id/updateContentEditText"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updateTitleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="?attr/colorOnSurface"
+            android:textColorHint="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Content Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/updateContentInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="Enter the description"
-        android:gravity="top"
-        android:padding="12dp"
-        android:textSize="18sp"
-        android:layout_below="@id/updateTitleEditText"
-        android:background="@drawable/green_border"
-        android:layout_marginTop="12dp" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/updateTitleInputLayout"
+        android:layout_marginTop="12dp"
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:hintTextColor="?attr/colorOnSurface"
+        android:hint="Enter the description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updateContentEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:scrollbars="vertical"
+            android:textColor="?attr/colorOnSurface"
+            android:textColorHint="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>

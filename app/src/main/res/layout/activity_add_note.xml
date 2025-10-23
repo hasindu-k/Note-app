@@ -37,37 +37,54 @@
     <!-- Title Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/titleInputLayout"
-        style="@style/LoginTextInputOuterFieldStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/addNoteHeading"
         android:layout_marginTop="16dp"
-        android:hint="Enter the title">
+        android:hint="Enter the title"
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:hintTextColor="?attr/colorOnSurface">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleEditText"
-            style="@style/LoginTextInputInnerFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="?attr/colorOnSurface"
+            android:textColorHint="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"/>
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- Content Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/contentInputLayout"
-        style="@style/LoginTextInputOuterFieldStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/titleInputLayout"
         android:layout_marginTop="12dp"
-        android:hint="Enter the description">
+        android:hint="Enter the description"
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:hintTextColor="?attr/colorOnSurface">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contentEditText"
-            style="@style/LoginTextInputInnerFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:lines="10"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            android:textColor="?attr/colorOnSurface"
+            android:textColorHint="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"/>
     </com.google.android.material.textfield.TextInputLayout>
+
 
 </RelativeLayout>
