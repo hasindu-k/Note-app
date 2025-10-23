@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.noteapp.data.NotesRepository
 import com.example.noteapp.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
-    private lateinit var dbHelper: NotesDatabaseHelper
+    private lateinit var repository: NotesRepository
     private lateinit var notesAdapter: NotesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dbHelper = NotesDatabaseHelper(this)
+        repository = NotesRepository(this)
 
         val currentUser = auth.currentUser
         if (currentUser == null) {
@@ -46,7 +47,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(userId: String) {
-        notesAdapter = NotesAdapter(dbHelper.getAllNotes(userId), this, userId)
+        val notes = repository.getNotesForUser(userId)
+        notesAdapter = NotesAdapter(notes, this, userId)
         binding.notesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = notesAdapter
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun refreshNotes() {
         auth.currentUser?.let {
-            val updatedNotes = dbHelper.getAllNotes(it.uid)
+            val updatedNotes = repository.getNotesForUser(it.uid)
             notesAdapter.refreshData(updatedNotes)
         }
     }
