@@ -11,4 +11,16 @@
     <color name="teal_700">#FF018786</color>
 
     <color name="yellow">#FFC801</color>
+
+    <!-- Dark mode colors -->
+    <color name="purple_200_dark">#FF9A67FC</color>
+    <color name="purple_500_dark">#FF3700B3</color>
+    <color name="purple_700_dark">#FF23007A</color>
+
+    <color name="teal_200_dark">#FF00BFA5</color>
+    <color name="teal_700_dark">#FF005757</color>
+
+    <color name="yellow_1_dark">#FFDFFF00</color>
+    <color name="yellow_dark">#FFB28500</color>
+
 </resources>

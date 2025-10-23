@@ -1,7 +1,40 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Base application theme for dark mode -->
     <style name="Base.Theme.NoteApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/purple_500_dark</item>
+        <item name="colorPrimaryVariant">@color/purple_700_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/teal_200_dark</item>
+        <item name="colorSecondaryVariant">@color/teal_700_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/yellow_dark</item>
+
+        <!-- Background color -->
+        <item name="android:windowBackground">@color/black</item>
     </style>
+
+    <!-- TextInput Styles for dark mode -->
+    <style name="LoginTextInputOuterFieldStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <style name="LoginTextInputInnerFieldStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
 </resources>

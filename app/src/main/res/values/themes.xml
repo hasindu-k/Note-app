@@ -1,34 +1,33 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.NoteApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/yellow_1</item>
-        <item name="colorPrimaryVariant">@color/yellow_1</item>
-        <item name="android:statusBarColor">@color/yellow_1</item>
-    </style>
 
-    <style name="Theme.NoteApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
+    <!-- Base application theme -->
+    <style name="Base.Theme.NoteApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary colors -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+
+        <!-- Secondary colors -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/yellow</item>
-        <!-- Customize your theme here. -->
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/yellow</item>
+
+        <!-- Background color -->
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
-    <style name="LoginTextInputOuterFieldStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <!-- TextInput Styles -->
+    <style name="LoginTextInputOuterFieldStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:layout_marginBottom">15dp</item>
     </style>
 
-    <style name="LoginTextInputInnerFieldStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="LoginTextInputInnerFieldStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
@@ -37,4 +36,5 @@
         <item name="android:textSize">14sp</item>
         <item name="android:singleLine">true</item>
     </style>
+
 </resources>
