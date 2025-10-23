@@ -1,9 +1,9 @@
 package com.example.noteapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -11,7 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var db: NotesDatabaseHelper
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private lateinit var dbHelper: NotesDatabaseHelper
     private lateinit var notesAdapter: NotesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,48 +20,63 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
+        dbHelper = NotesDatabaseHelper(this)
 
-        if (currentUser != null) {
-            val userId = currentUser.uid
-            val userName = currentUser.email
-
-            binding.userNameTextView.text = userName ?: "Guest"
-
-            db = NotesDatabaseHelper(this)
-            notesAdapter = NotesAdapter(db.getAllNotes(userId), this, userId)
-
-            // Display userNotes in your UI
-            binding.notesRecyclerView.layoutManager = LinearLayoutManager(this)
-            binding.notesRecyclerView.adapter = notesAdapter
-
-            binding.addButton.setOnClickListener {
-                val intent = Intent(this, AddNoteActivity::class.java)
-                startActivity(intent)
-            }
-            binding.logoutButton.setOnClickListener {
-                FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, LogInActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }else {
-            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
-            // Redirect to login screen
-            val intent = Intent(this, LogInActivity::class.java)
-            startActivity(intent)
-            finish()
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            showToast("User not logged in")
+            navigateToLogin()
+            return
         }
+
+        initUI(currentUser.email ?: "Guest", currentUser.uid)
     }
 
     override fun onResume() {
         super.onResume()
-        val currentUser = FirebaseAuth.getInstance().currentUser
+        refreshNotes()
+    }
 
-        if (currentUser != null) {
-            val userId = currentUser.uid
-            notesAdapter.refreshData(db.getAllNotes(userId))
+    /** ---------------- Helper Methods ---------------- */
+
+    private fun initUI(userName: String, userId: String) {
+        binding.userNameTextView.text = userName
+        setupRecyclerView(userId)
+        setupListeners(userId)
+    }
+
+    private fun setupRecyclerView(userId: String) {
+        notesAdapter = NotesAdapter(dbHelper.getAllNotes(userId), this, userId)
+        binding.notesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = notesAdapter
+        }
+    }
+
+    private fun setupListeners(userId: String) {
+        binding.addButton.setOnClickListener {
+            startActivity(Intent(this, AddNoteActivity::class.java))
         }
 
+        binding.logoutButton.setOnClickListener {
+            auth.signOut()
+            navigateToLogin()
+        }
+    }
+
+    private fun refreshNotes() {
+        auth.currentUser?.let {
+            val updatedNotes = dbHelper.getAllNotes(it.uid)
+            notesAdapter.refreshData(updatedNotes)
+        }
+    }
+
+    private fun navigateToLogin() {
+        startActivity(Intent(this, LogInActivity::class.java))
+        finish()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
