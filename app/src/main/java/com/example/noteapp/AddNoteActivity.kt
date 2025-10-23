@@ -3,20 +3,21 @@ package com.example.noteapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.noteapp.data.NotesRepository
 import com.example.noteapp.databinding.ActivityAddNoteBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var  binding: ActivityAddNoteBinding
-    private lateinit var db: NotesDatabaseHelper
+    private lateinit var repository: NotesRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = NotesDatabaseHelper(this)
+        repository = NotesRepository(this)
 
         binding.saveButton.setOnClickListener {
             val title = binding.titleEditText.text.toString()
@@ -30,7 +31,7 @@ class AddNoteActivity : AppCompatActivity() {
                 if (currentUser != null) {
                     val userId = currentUser.uid
                     val note = Note(0, title, content, userId)
-                    db.insertNote(note)
+                    repository.insertNote(note)
                     finish()
                     Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show()
                 }
