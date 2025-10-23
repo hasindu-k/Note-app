@@ -6,56 +6,60 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    app:cardUseCompatPadding="true" >
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp" >
-
+        android:padding="16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp" >
+            android:layout_marginTop="8dp">
 
+            <!-- Note Title -->
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"
-                android:textColor="@color/yellow_1"
-                android:textSize="18dp"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Update Button -->
             <ImageView
                 android:id="@+id/updateButton"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="30dp"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/edit" />
+                android:src="@drawable/edit"
+                app:tint="?attr/colorPrimary" />
 
+            <!-- Delete Button -->
             <ImageView
                 android:id="@+id/deleteButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/delete" />
-
+                android:src="@drawable/delete"
+                app:tint="?attr/colorError" />
 
         </RelativeLayout>
 
+        <!-- Note Content -->
         <TextView
             android:id="@+id/contentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
             android:maxLines="3"
-            android:layout_marginTop="4dp" />
-
+            android:layout_marginTop="4dp"
+            android:textColor="?attr/colorOnBackground" />
 
     </LinearLayout>
 

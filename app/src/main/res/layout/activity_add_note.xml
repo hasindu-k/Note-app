@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_add_24"
+        app:tint="?attr/colorOnBackground"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/addNoteHeading"
         android:layout_marginEnd="6dp"

@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="yellow_1">#FFEB3B</color>
+    <!-- Neutral colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Primary Colors -->
+    <color name="primary_light">#6200EE</color>            <!-- Purple 500 -->
+    <color name="primary_variant_light">#3700B3</color>    <!-- Purple 700 -->
+    <color name="primary_dark">#BB86FC</color>             <!-- Purple 200 -->
+    <color name="primary_variant_dark">#9A67FC</color>     <!-- Darker Purple -->
 
-    <color name="yellow">#FFC801</color>
+    <!-- Secondary Colors -->
+    <color name="secondary_light">#03DAC5</color>          <!-- Teal 200 -->
+    <color name="secondary_variant_light">#018786</color>  <!-- Teal 700 -->
+    <color name="secondary_dark">#00BFA5</color>
+    <color name="secondary_variant_dark">#005757</color>
 
-    <!-- Dark mode colors -->
-    <color name="purple_200_dark">#FF9A67FC</color>
-    <color name="purple_500_dark">#FF3700B3</color>
-    <color name="purple_700_dark">#FF23007A</color>
+    <!-- Accent / Highlight (Yellow) -->
+    <color name="accent_light">#FFC107</color>            <!-- Yellow 500 -->
+    <color name="accent_dark">#FFD600</color>             <!-- Slightly brighter yellow for dark mode -->
 
-    <color name="teal_200_dark">#FF00BFA5</color>
-    <color name="teal_700_dark">#FF005757</color>
+    <!-- Background / Surface -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="surface_light">#F5F5F5</color>
+    <color name="on_surface_light">#000000</color>
 
-    <color name="yellow_1_dark">#FFDFFF00</color>
-    <color name="yellow_dark">#FFB28500</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="on_surface_dark">#FFFFFF</color>
 
+    <!-- Status / Navigation Bar -->
+    <color name="status_bar_light">#6200EE</color>
+    <color name="status_bar_dark">#3700B3</color>
+
+    <!-- Optional extras for buttons or borders -->
+    <color name="button_background_light">#6200EE</color>
+    <color name="button_background_dark">#BB86FC</color>
+    <color name="button_text_light">#FFFFFF</color>
+    <color name="button_text_dark">#000000</color>
 </resources>
